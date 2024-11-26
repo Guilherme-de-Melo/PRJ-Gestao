@@ -3,15 +3,31 @@ package org.example;
 public class PlacaMae {
 
     private int id;
-    private String fabricante;
+    private String nome;
     private String soquete;
-    private boolean podeOverclock;
+    private double preco;
 
-    public PlacaMae(int id, String fabricante, String soquete, boolean podeOverclock) {
+    public int getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getSoquete() {
+        return soquete;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public PlacaMae(int id, String nome, String soquete, double preco) {
         this.id = id;
-        this.fabricante = fabricante;
+        this.nome = nome;
         this.soquete = soquete;
-        this.podeOverclock = podeOverclock;
+        this.preco = preco;
     }
 
 }
