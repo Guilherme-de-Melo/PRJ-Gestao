@@ -8,6 +8,7 @@ public class ListaProdutos {
 
     List<Processador> listaProcessadores;
     List<PlacaMae> listaPlacasMae;
+    List<PlacaDeVideo> listaPlacaDeVideos;
 
     ListaProdutos(){
         List<Processador> listaProcessador = new ArrayList<>();
@@ -31,6 +32,17 @@ public class ListaProdutos {
         listaPlacasMae.add(new PlacaMae(1, "B760M","LGA 1700", 700));
         listaPlacasMae.add(new PlacaMae(1, "Z620M","LGA 1700", 1900));
         this.listaPlacasMae = listaPlacasMae;
+
+        List<PlacaDeVideo> listaPlacaDeVideo = new ArrayList<PlacaDeVideo>();
+        listaPlacaDeVideo.add(new PlacaDeVideo(0, "NVIDIA",    "GeForce RTX 4090", 450));
+        listaPlacaDeVideo.add(new PlacaDeVideo(0, "NVIDIA",    "GeForce RTX 3080 Ti", 350));
+        listaPlacaDeVideo.add(new PlacaDeVideo(0, "NVIDIA",    "GeForce RTX 3070 Ti", 290));
+        listaPlacaDeVideo.add(new PlacaDeVideo(0, "NVIDIA",    "GeForce RTX 3060 Ti", 200));
+        listaPlacaDeVideo.add(new PlacaDeVideo(0, "AMD",    "Radeon RX 7900 XTX", 300));
+        listaPlacaDeVideo.add(new PlacaDeVideo(0, "AMD",    "Radeon RX 7800 XT", 260));
+        listaPlacaDeVideo.add(new PlacaDeVideo(0, "AMD",    "Radeon RX 7700 XT", 230));
+        this.listaPlacaDeVideos = listaPlacaDeVideo;
+
 
     }
     
