@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hardware Craft</title>
+    <link rel="stylesheet"  href="Style.css"/>
+    <link rel="stylesheet" href="SyleForm.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a class = "logo" href="/src/main/java/index.html">Hardware Craft</a>
+            <div class = "mobile-menu">
+                <div class = "line1"></div>
+                <div class = "line2"></div>
+                <div class = "line3"></div>
+            </div>
+            <ul class = "nav-list">
+                <li><a href="/src/main/java/About.html">Sobre</a></li>
+                <li><a href="/src/main/java/Contact.html">Contato</a></li> 
+            </ul>
+        </nav> 
+    </header>
+
+    <main>
+        <div class = "formulario">
+            <div class = "form_box"> 
+                <h2 class = "title"> Bem vindo ao Hardware Craft</h2>  
+                <form action="" method="get">
+                    <h2 class = "tituloProcessador" >Escolha o fabricante do processador:   </h2>
+                    <div class="botaoProcessador">
+                        <button class="botaoP1" data-fabricante="AMD"></button>
+                        <button class="botaoP2" data-fabricante="Intel"></button>
+                    </div>
+
+                    <div class="dropdown">
+                        <div class="select">
+                            <span class="selected">--</span>
+                            <div class="caret"></div>
+                        </div>
+                        <ul class="menuP">
+                            <li class="active">--</li>
+                            <li>AMD Ryzen 5 9600X</li>
+                            <li>AMD Ryzen 7 9700X</li>
+                            <li>AMD Ryzen 7 9800X3D</li>
+                            <li>AMD Ryzen 9 9900X</li>
+                            <li>AMD Ryzen 9 9950X</li>    
+                         
+                            <li>Intel Core i3-14100</li>
+                            <li>Intel Core i3-14400</li>
+                            <li>Intel Core i5-14600K</li>
+                            <li>Intel Core i7-14700K</li>
+                            <li>Intel Core i9-14900K</li>
+                        </ul>
+                    </div>
+
+                    <h2 class = "tituloPVideo" >Escolha o fabricante da Placa de Video:   </h2>
+                    <div class="botaoPVideo">
+    <button class="botaoV1" data-fabricante="AMD"></button>
+    <button class="botaoV2" data-fabricante="NVIDIA"></button>
+</div>
+                        <div class="dropdown">
+                        <div class="select">
+                        <span class="selected">--</span>
+                        <div class="caret"></div>
+                        </div>
+                        <ul class="menuP">
+                            <li class="active">--</li>
+                            <li>Radeon RX 7600</li>
+                            <li>Radeon RX 7700 XT</li>
+                            <li>Radeon RX 7900 XT</li>
+                            <li>Radeon RX 7900 XTX</li>
+                            <li>GeForce RTX 4050</li>
+                            <li>GeForce RTX 4060 TI</li>
+                            <li>GeForce RTX 4070 TI</li>
+                            <li>GeForce RTX 4090</li>
+                        </ul>
+                    </div>
+
+                    <button class="botaoSubmit">Enviar configurações de Máquina</button>
+    
+                </form>
+            </div>
+        </div>
+    
+    </main>
+    <footer></footer>
+    <script src="navbar.js"></script>
+    <script src="Selector.js"></script>
+</body>
+</html>
