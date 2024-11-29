@@ -34,13 +34,13 @@ public class ListaProdutos {
         this.listaPlacasMae = listaPlacasMae;
 
         List<PlacaDeVideo> listaPlacaDeVideo = new ArrayList<PlacaDeVideo>();
-        listaPlacaDeVideo.add(new PlacaDeVideo(0, "NVIDIA",    "GeForce RTX 4090", 450));
-        listaPlacaDeVideo.add(new PlacaDeVideo(0, "NVIDIA",    "GeForce RTX 3080 Ti", 350));
-        listaPlacaDeVideo.add(new PlacaDeVideo(0, "NVIDIA",    "GeForce RTX 3070 Ti", 290));
-        listaPlacaDeVideo.add(new PlacaDeVideo(0, "NVIDIA",    "GeForce RTX 3060 Ti", 200));
-        listaPlacaDeVideo.add(new PlacaDeVideo(0, "AMD",    "Radeon RX 7900 XTX", 300));
-        listaPlacaDeVideo.add(new PlacaDeVideo(0, "AMD",    "Radeon RX 7800 XT", 260));
-        listaPlacaDeVideo.add(new PlacaDeVideo(0, "AMD",    "Radeon RX 7700 XT", 230));
+        listaPlacaDeVideo.add(new PlacaDeVideo(0, "NVIDIA","GeForce RTX 4090", 450, 11000));
+        listaPlacaDeVideo.add(new PlacaDeVideo(0, "NVIDIA","GeForce RTX 4080 Super", 420,9000));
+        listaPlacaDeVideo.add(new PlacaDeVideo(0, "NVIDIA","GeForce RTX 4070 Super", 220,4000));
+        listaPlacaDeVideo.add(new PlacaDeVideo(0, "NVIDIA","GeForce RTX 4060 Ti",165, 2400));
+        listaPlacaDeVideo.add(new PlacaDeVideo(0, "AMD","Radeon RX 7900 XTX", 300, 6000));
+        listaPlacaDeVideo.add(new PlacaDeVideo(0, "AMD","Radeon RX 7800 XT", 260, 4000));
+        listaPlacaDeVideo.add(new PlacaDeVideo(0, "AMD","Radeon RX 7700 XT", 230, 3200));
         this.listaPlacaDeVideos = listaPlacaDeVideo;
 
 
