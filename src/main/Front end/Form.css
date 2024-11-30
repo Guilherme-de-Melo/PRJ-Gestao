@@ -5,6 +5,14 @@
     box-sizing: border-box;
 }
 
+.tituloPVideo {
+    margin-top: 20px; 
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
 .dropdown {
     position: relative;
     width: 200px; 
@@ -103,15 +111,24 @@
 .form_box {
     display: flex;
     flex-direction: column;
-    background-color: rgb(172, 170, 170);
-    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.15)); 
+    border-radius: 16px; 
     width: 90%;
     max-width: 600px;
-    padding: 16px;
+    padding: 20px;
     margin-bottom: 40px; 
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37); 
+    backdrop-filter: blur(3px); 
+    -webkit-backdrop-filter: blur(15px); 
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    h2 {
+        font-size: 23px; 
+      }
+      p {
+        font-size: inherit; 
+      }
+    
 }
-
 
 .form_box .title {
     padding: 14px 16px;
@@ -143,6 +160,7 @@
     padding-left: 16px;
     margin-bottom: 16px;
     font-size: 16px;
+    
 }
 
 .form_box input:first-child{
@@ -166,7 +184,7 @@
     border: 2px;
     outline: none;
     width: 120px;
-    height: 120px;
+    height: 117px;
     border-radius: 8px;
     color: #fff;
     font-size: 16px;
@@ -178,14 +196,14 @@
 }
 
 .botaoP1 {
-    background-image: url(/src/main/images/amdd.jpg);
+    background-image: url(/src/main/images/amd.jpg);
     background-size: cover; 
     background-position: center;
-   
+    
 }
 
 .botaoP2 {
-    background: url(/src/main/images/intelc.jpg);
+    background: url(/src/main/images/intel.jpg);
     background-size: cover; 
     background-position: center;
   
@@ -193,14 +211,14 @@
 
 
 .botaoV1 {
-    background-image: url(/src/main/images/radeon.jpg);
+    background-image: url(/src/main/images/radeon.png);
     background-size: cover; 
     background-position: center;
    
 }
 
 .botaoV2 {
-    background: url(/src/main/images/nvidiac.png);
+    background: url(/src/main/images/nvidia.png);
     background-size: cover; 
     background-position: center;
   

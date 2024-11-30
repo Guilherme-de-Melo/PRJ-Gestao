@@ -1,4 +1,3 @@
-
 const dropdownProcessador = document.querySelector('.dropdown');
 const selectProcessador = dropdownProcessador.querySelector('.select');
 const caretProcessador = dropdownProcessador.querySelector('.caret');
@@ -39,7 +38,6 @@ function gerenciarSelecao(botoes, classeAtiva, filtroTipo) {
     });
 }
 
-
 function toggleDropdown(select, caret, menu) {
     select.classList.toggle('select-clicked');
     caret.classList.toggle('caret-rotate');
@@ -57,12 +55,14 @@ function aplicarFiltro(fabricante, tipoFiltro) {
         selectedText = selectedPlacaVideo;
     }
 
-    if (!fabricante) {
+
+    if (!fabricante || fabricante === '--') {
         options.forEach(item => {
             item.style.display = 'block'; 
         });
         return; 
     }
+
 
     options.forEach(item => {
         if (item.innerText === '--' || item.innerText.includes(fabricante)) {
@@ -107,6 +107,7 @@ function selecionarItem(tipoFiltro) {
     });
 }
 
+
 gerenciarSelecao(botoesProcessador, 'botao-selecionado', "processador");
 gerenciarSelecao(botoesPlacaVideo, 'botao-selecionado', "placaVideo");
 
@@ -127,3 +128,25 @@ selectPlacaVideo.addEventListener('click', () => toggleDropdown(selectPlacaVideo
 
 selecionarItem("processador");
 selecionarItem("placaVideo");
+function gerarArquivoDownload() {
+    
+    const configuracoes = `
+Processador: ${selectedProcessador.innerText}
+Placa de Vídeo: ${selectedPlacaVideo.innerText}
+Fabricante do Processador: ${fabricanteProcessadorAtivo}
+Fabricante da Placa de Vídeo: ${fabricantePlacaVideoAtivo}`;
+
+
+    const blob = new Blob([configuracoes], { type: 'text/plain' });
+
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'configuracoes_maquina.txt';  
+    link.click();
+}
+
+
+document.querySelector('.botaoSubmit').addEventListener('click', (event) => {
+    event.preventDefault(); 
+    gerarArquivoDownload();  
+});
