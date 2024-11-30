@@ -12,12 +12,6 @@
     <header>
         <nav>
             <a class = "logo" href="/src/main/Front end/index.html">Hardware Craft</a>
-            <div class = "mobile-menu">
-                <div class = "line1"></div>
-                <div class = "line2"></div>
-                <div class = "line3"></div>
-            </div>
-            
         </nav> 
     </header>
 
@@ -44,7 +38,6 @@
                             <li>AMD Ryzen 7 9800X3D</li>
                             <li>AMD Ryzen 9 9900X</li>
                             <li>AMD Ryzen 9 9950X</li>    
-                         
                             <li>Intel Core i3-14100</li>
                             <li>Intel Core i3-14400</li>
                             <li>Intel Core i5-14600K</li>
@@ -73,11 +66,27 @@
                             <li>NVIDIA GeForce RTX 4060 TI</li>
                             <li>NVIDIA GeForce RTX 4070 TI</li>
                             <li>NVIDIA GeForce RTX 4090</li>
+                        </ul>
+                    </div>
 
+                    <h2 class = "tituloSoquete">Soquete de Placa Mãe:</h2>
+                    <div class = "SoqueteplacaMae">
+                        <div class = "dropdownPM">
+                            <div class="select">
+                            <span class="selected">--</span>
+                            <div class="caret"></div>
+                        </div>
+                        <ul class = "menuPM">
 
                         </ul>
                     </div>
 
+                    <div class="Considerações">
+                        <h2>Considerações no Arquivo:</h2>
+                        <h3>Portência de fonte recomendada <span id="fonteRecomendada"></span></h3>
+                        <h3>Valor aproximado <span id="valorAproximado"></span></h3>
+                    </div>
+                    
                     <button class="botaoSubmit">Enviar configurações de Máquina</button>
     
                 </form>
@@ -97,10 +106,11 @@
         
           <div class="footer">
             <p>© 2024 Hardware Craft. Todos os direitos reservados.</p>
-            <p><a href="#">Termos de Uso</a> | <a href="#">Política de Privacidade</a></p>
+            <p>Termos de Uso | Política de Privacidade</p>
           </div>
     </footer>
     <script src="Selector.js"></script>
+    <script src="PlacaMae.js"></script>
     <script>
 
         document.querySelectorAll('.botaoProcessador button').forEach(button => {

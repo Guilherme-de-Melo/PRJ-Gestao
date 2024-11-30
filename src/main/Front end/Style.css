@@ -78,7 +78,6 @@ body {
   transition: 0.3s;
 }
 
-
 @media (max-width: 999px) {
 
     body{
@@ -121,7 +120,6 @@ body {
         }  
     }
 
-
 .mobile-menu.active .line1 {
  transform: rotate(-45deg) translate(-8px, 8px);
 }
@@ -144,19 +142,9 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
-  
-/*footer {
-  background: #23232e;
-  color: white;
-  padding: 10px;
-  text-align: center;
-  position: relative; 
-  width: 100%;
-
-}*/
 
 footer {
-  background-color: #23232e; /* Cor de fundo suave */
+  background-color: #23232e; 
   padding: 20px;
   text-align: center;
   color: #fff;

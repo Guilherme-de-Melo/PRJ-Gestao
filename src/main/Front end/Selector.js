@@ -12,6 +12,13 @@ const menuPlacaVideo = dropdownPlacaVideo.querySelector('.menuP');
 const optionsPlacaVideo = menuPlacaVideo.querySelectorAll('li');
 const selectedPlacaVideo = dropdownPlacaVideo.querySelector('.selected');
 
+const dropdownPlacaMae = document.querySelector('.dropdownPM');
+const selectPlacaMae = dropdownPlacaMae.querySelector('.select');
+const caretPlacaMae = dropdownPlacaMae.querySelector('.caret');
+const menuPlacaMae = dropdownPlacaMae.querySelector('.menuPM');
+const optionsPlacaMae = menuPlacaMae.querySelectorAll('li');
+const selectedPlacaMae = dropdownPlacaMae.querySelector('.selected');
+
 const botoesProcessador = document.querySelectorAll('.botaoProcessador button');
 const botoesPlacaVideo = document.querySelectorAll('.botaoPVideo button');
 
@@ -55,14 +62,14 @@ function aplicarFiltro(fabricante, tipoFiltro) {
         selectedText = selectedPlacaVideo;
     }
 
+    options.forEach(item => {
+        item.style.display = 'block';  
+    });
 
     if (!fabricante || fabricante === '--') {
-        options.forEach(item => {
-            item.style.display = 'block'; 
-        });
-        return; 
+        selectedText.innerText = '--';  
+        return;  
     }
-
 
     options.forEach(item => {
         if (item.innerText === '--' || item.innerText.includes(fabricante)) {
@@ -72,6 +79,8 @@ function aplicarFiltro(fabricante, tipoFiltro) {
         }
     });
 }
+
+
 
 function selecionarItem(tipoFiltro) {
     let options, select, caret, menu, selectedText;
@@ -107,7 +116,10 @@ function selecionarItem(tipoFiltro) {
     });
 }
 
-
+function garantirExibicaoInicial() {
+    aplicarFiltro('--', "processador");
+    aplicarFiltro('--', "placaVideo");
+}
 gerenciarSelecao(botoesProcessador, 'botao-selecionado', "processador");
 gerenciarSelecao(botoesPlacaVideo, 'botao-selecionado', "placaVideo");
 
@@ -115,12 +127,18 @@ const botaoProcessadorInicial = document.querySelector('.botaoProcessador .botao
 if (botaoProcessadorInicial) {
     fabricanteProcessadorAtivo = botaoProcessadorInicial.getAttribute('data-fabricante');
     aplicarFiltro(fabricanteProcessadorAtivo, "processador");
+} else {
+
+    garantirExibicaoInicial();
 }
 
 const botaoPlacaVideoInicial = document.querySelector('.botaoPVideo .botao-selecionado');
 if (botaoPlacaVideoInicial) {
     fabricantePlacaVideoAtivo = botaoPlacaVideoInicial.getAttribute('data-fabricante');
     aplicarFiltro(fabricantePlacaVideoAtivo, "placaVideo");
+} else {
+
+    garantirExibicaoInicial();
 }
 
 selectProcessador.addEventListener('click', () => toggleDropdown(selectProcessador, caretProcessador, menuProcessador));
@@ -129,13 +147,15 @@ selectPlacaVideo.addEventListener('click', () => toggleDropdown(selectPlacaVideo
 selecionarItem("processador");
 selecionarItem("placaVideo");
 function gerarArquivoDownload() {
-    
     const configuracoes = `
 Processador: ${selectedProcessador.innerText}
 Placa de Vídeo: ${selectedPlacaVideo.innerText}
 Fabricante do Processador: ${fabricanteProcessadorAtivo}
-Fabricante da Placa de Vídeo: ${fabricantePlacaVideoAtivo}`;
-
+Fabricante da Placa de Vídeo: ${fabricantePlacaVideoAtivo}
+Placa Mãe: ${selectedPlacaMae.innerText}
+Fonte Recomendada: ${fonteRecomendada.innerText}
+Valor Aproximado: ${valorAproximado.innerText}
+`;
 
     const blob = new Blob([configuracoes], { type: 'text/plain' });
 
@@ -144,6 +164,44 @@ Fabricante da Placa de Vídeo: ${fabricantePlacaVideoAtivo}`;
     link.download = 'configuracoes_maquina.txt';  
     link.click();
 }
+
+const url = "http://127.0.0.1:5500/src/main/Front%20end/index.html";
+
+        fetch(url)
+        .then(response => {
+            console.log("entrou");
+            console.log(response);
+            return response.text();
+        })
+        .then(data => {
+            console.log("entrou em data:");
+            console.log(data);
+        })
+        .catch(error => {
+            console.error("Erro:", error); 
+        });
+
+function toggleDropdownPlacaMae() {
+    selectPlacaMae.classList.toggle('select-clicked');
+    caretPlacaMae.classList.toggle('caret-rotate');
+    menuPlacaMae.classList.toggle('open');
+}
+
+function selecionarItemPlacaMae() {
+    optionsPlacaMae.forEach(option => {
+        option.addEventListener('click', (event) => {
+            event.stopPropagation();
+            selectedPlacaMae.innerText = option.innerText;
+            selectPlacaMae.classList.remove('select-clicked');
+            caretPlacaMae.classList.remove('caret-rotate');
+            menuPlacaMae.classList.remove('open');
+        });
+    });
+}
+
+selectPlacaMae.addEventListener('click', () => toggleDropdownPlacaMae());
+
+selecionarItemPlacaMae()
 
 
 document.querySelector('.botaoSubmit').addEventListener('click', (event) => {
