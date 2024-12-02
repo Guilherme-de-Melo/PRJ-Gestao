@@ -33,7 +33,7 @@ nav {
 }
 
 main {
-  background: url(/src/main/images/main.jpg) no-repeat center center;
+  background: url(/images/main.jpg) no-repeat center center;
   background-size: cover; 
   min-height: 100vh; 
   display: flex;

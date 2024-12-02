@@ -249,7 +249,7 @@ document.querySelector('.botaoSubmit').addEventListener('click', (event) => {
       .then(response => response.json())
       .then(data => {
         console.log('Resposta do servidor:', data);
-        atualizarInformacoes('Acima de ' + data.tdp + ' de TDP', data.precoProduto);
+        atualizarInformacoes('Acima de ' + data.tdp + 'W', data.precoProduto);
         // Caso todas as validações sejam aprovadas, prossiga
         gerarArquivoDownload(data.tdp, data.precoProduto);
       })

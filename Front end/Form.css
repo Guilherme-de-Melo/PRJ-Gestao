@@ -163,19 +163,19 @@ body {
 }
 
 .botaoP1 {
-    background-image: url(/src/main/images/amd.jpg);
+    background-image: url(/images/amd.jpg);
 }
 
 .botaoP2 {
-    background-image: url(/src/main/images/intel.jpg);
+    background-image: url(/images/intel.jpg);
 }
 
 .botaoV1 {
-    background-image: url(/src/main/images/radeon.png);
+    background-image: url(/images/radeon.png);
 }
 
 .botaoV2 {
-    background-image: url(/src/main/images/nvidia.png);
+    background-image: url(/images/nvidia.png);
 }
 
 .botaoP1:hover, .botaoP2:hover, .botaoV1:hover, .botaoV2:hover {
