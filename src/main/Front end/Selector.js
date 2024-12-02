@@ -144,15 +144,15 @@ selectPlacaVideo.addEventListener('click', () => toggleDropdown(selectPlacaVideo
 
 selecionarItem("processador");
 selecionarItem("placaVideo");
-function gerarArquivoDownload() {
+function gerarArquivoDownload(fonteRecomendada, valorAproximado) {
     const configuracoes = `
 Processador: ${selectedProcessador.innerText}
 Placa de Vídeo: ${selectedPlacaVideo.innerText}
 Fabricante do Processador: ${fabricanteProcessadorAtivo}
 Fabricante da Placa de Vídeo: ${fabricantePlacaVideoAtivo}
 Placa Mãe: ${selectedPlacaMae.innerText}
-Fonte Recomendada: ${fonteRecomendada.innerText}
-Valor Aproximado: ${valorAproximado.innerText}
+Fonte Recomendada: ${fonteRecomendada}
+Valor Aproximado: ${valorAproximado}
 `;
 
     const blob = new Blob([configuracoes], { type: 'text/plain' });
@@ -235,8 +235,24 @@ document.querySelector('.botaoSubmit').addEventListener('click', (event) => {
         return; // Interrompe o processo
     }
 
-    // Caso todas as validações sejam aprovadas, prossiga
-    gerarArquivoDownload();
+    console.log(selectedProcessador.textContent);
+    console.log(selectedPlacaVideo.textContent);
+    fetch('http://localhost:3000/exemplo/dados', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ placaDeVideo: selectedPlacaVideo.textContent, processador: selectedProcessador.textContent })
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Resposta do servidor:', data);
+        // Caso todas as validações sejam aprovadas, prossiga
+        gerarArquivoDownload(data.tdp, data.precoProduto);
+      })
+      .catch(error => {
+        console.error('Erro:', error);
+      });
 });
 
 
