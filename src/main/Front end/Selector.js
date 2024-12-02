@@ -80,8 +80,6 @@ function aplicarFiltro(fabricante, tipoFiltro) {
     });
 }
 
-
-
 function selecionarItem(tipoFiltro) {
     let options, select, caret, menu, selectedText;
     if (tipoFiltro === "processador") {
@@ -199,12 +197,48 @@ function selecionarItemPlacaMae() {
     });
 }
 
-selectPlacaMae.addEventListener('click', () => toggleDropdownPlacaMae());
+function mostrarAlerta(mensagem) {
+    const alertBox = document.getElementById('customAlert');
+    const alertMessage = document.getElementById('alertMessage');
 
-selecionarItemPlacaMae()
+    alertMessage.textContent = mensagem; 
+    alertBox.classList.remove('hidden'); 
+}
+
+function fecharAlerta() {
+    const alertBox = document.getElementById('customAlert');
+    alertBox.classList.add('hidden'); 
+}
 
 
 document.querySelector('.botaoSubmit').addEventListener('click', (event) => {
-    event.preventDefault(); 
-    gerarArquivoDownload();  
+    event.preventDefault(); // Previne o comportamento padrão do formulário sempre
+
+    // Validações
+    const processadorSelecionado = document.querySelector('.botaoProcessador .active');
+    const videoSelecionado = document.querySelector('.botaoPVideo .active');
+    const placaMaeSelecionada = document.querySelector('.dropdownPM .selected');
+
+    // Verifique se todos os campos necessários estão preenchidos
+    if (!processadorSelecionado || processadorSelecionado.textContent === '--') {
+        mostrarAlerta("Por favor, selecione um processador.");
+        return; // Interrompe o processo
+    }
+
+    if (!videoSelecionado || videoSelecionado.textContent === '--') {
+        mostrarAlerta("Por favor, selecione uma placa de vídeo.");
+        return; // Interrompe o processo
+    }
+
+    if (!placaMaeSelecionada || placaMaeSelecionada.textContent === '--') {
+        mostrarAlerta("Por favor, selecione uma placa mãe.");
+        return; // Interrompe o processo
+    }
+
+    // Caso todas as validações sejam aprovadas, prossiga
+    gerarArquivoDownload();
 });
+
+
+
+
