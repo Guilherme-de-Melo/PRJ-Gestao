@@ -62,20 +62,24 @@ function aplicarFiltro(fabricante, tipoFiltro) {
         selectedText = selectedPlacaVideo;
     }
 
-    options.forEach(item => {
-        item.style.display = 'block';  
-    });
-
     if (!fabricante || fabricante === '--') {
         selectedText.innerText = '--';  
         return;  
     }
+    
+    options.forEach(item => {
+        item.style.display = 'block';  
+    });
+
+    console.log(options);
 
     options.forEach(item => {
-        if (item.innerText === '--' || item.innerText.includes(fabricante)) {
-            item.style.display = 'block'; 
+        console.log(item.textContent);
+        console.log(fabricante);
+        if (item.textContent === '--' || item.textContent.includes(fabricante)) {
+            item.style.display = 'block';
         } else {
-            item.style.display = 'none'; 
+            item.style.display = 'none';
         }
     });
 }
@@ -163,21 +167,21 @@ Valor Aproximado: ${valorAproximado}
     link.click();
 }
 
-const url = "http://127.0.0.1:5500/src/main/Front%20end/index.html";
+// const url = "http://127.0.0.1:5500/src/main/Front%20end/index.html";
 
-        fetch(url)
-        .then(response => {
-            console.log("entrou");
-            console.log(response);
-            return response.text();
-        })
-        .then(data => {
-            console.log("entrou em data:");
-            console.log(data);
-        })
-        .catch(error => {
-            console.error("Erro:", error); 
-        });
+//         fetch(url)
+//         .then(response => {
+//             console.log("entrou");
+//             console.log(response);
+//             return response.text();
+//         })
+//         .then(data => {
+//             console.log("entrou em data:");
+//             console.log(data);
+//         })
+//         .catch(error => {
+//             console.error("Erro:", error); 
+//         });
 
 function toggleDropdownPlacaMae() {
     selectPlacaMae.classList.toggle('select-clicked');
@@ -247,6 +251,7 @@ document.querySelector('.botaoSubmit').addEventListener('click', (event) => {
       .then(response => response.json())
       .then(data => {
         console.log('Resposta do servidor:', data);
+        atualizarInformacoes('Média entre' + data.tdp + ' de TDP', data.precoProduto);
         // Caso todas as validações sejam aprovadas, prossiga
         gerarArquivoDownload(data.tdp, data.precoProduto);
       })
@@ -255,6 +260,14 @@ document.querySelector('.botaoSubmit').addEventListener('click', (event) => {
       });
 });
 
+function atualizarInformacoes(novaFonte, novoValor) {
+    const fontesRecomendadas = document.querySelector('.Considerações :nth-child(2)');
+    const valorAproximado = document.querySelector('.Considerações h3:last-child');
+
+    console.log(fontesRecomendadas);
+    fontesRecomendadas.textContent = `Fonte recomendada: ${novaFonte}`;
+    valorAproximado.textContent = `Valor aproximado: R$ ${novoValor}`;
+  }
 
 
 

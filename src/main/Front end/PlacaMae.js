@@ -26,14 +26,4 @@ function atualizarSoquetePlacaMae(fabricante) {
         }
     });
 }
-function atualizarInformacoes(novaFonte, novoValor) {
-    const fontesRecomendadas = document.querySelector('.Consideracoes h3:first-child');
-    const valorAproximado = document.querySelector('.Consideracoes h3:last-child');
-  
-    fontesRecomendadas.textContent = `Fonte recomendada: ${novaFonte}`;
-    valorAproximado.textContent = `Valor aproximado: R$ ${novoValor}`;
-  }
-  
-  atualizarInformacoes('Nova Fonte XYZ', 150);
-
   
