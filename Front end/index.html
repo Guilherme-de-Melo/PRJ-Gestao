@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hardware Craft</title>
+    <link rel="stylesheet"  href="Style.css"/>
+    <link rel="stylesheet" href="Form.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a class = "logo" href="/Front end/index.html">Hardware Craft</a>
+        </nav> 
+    </header>
+
+    <main>
+        <div class = "formulario">
+            <div class = "form_box"> 
+                <h2 class = "title"> Bem vindo ao Hardware Craft</h2>  
+                <form action="" method="get">
+                    <h2 class = "tituloProcessador" >Escolha o fabricante do processador:   </h2>
+                    <div class="botaoProcessador">
+                        <button class="botaoP1" data-fabricante="AMD"></button>
+                        <button class="botaoP2" data-fabricante="Intel"></button>
+                    </div>
+
+                    <div class="dropdown">
+                        <div class="select">
+                            <span class="selected">--</span>
+                            <div class="caret"></div>
+                        </div>
+                        <ul class="menuP">
+                            <li class="active">--</li>
+                            <li>AMD Ryzen 5 9600X</li>
+                            <li>AMD Ryzen 7 9700X</li>
+                            <li>AMD Ryzen 7 9800X3D</li>
+                            <li>AMD Ryzen 9 9900X</li>
+                            <li>AMD Ryzen 9 9950X</li>    
+                            <li>Intel Core i3-14100</li>
+                            <li>Intel Core i3-14400</li>
+                            <li>Intel Core i5-14600K</li>
+                            <li>Intel Core i7-14700K</li>
+                            <li>Intel Core i9-14900K</li>
+                        </ul>
+                    </div>
+
+                    <h2 class = "tituloPVideo" >Escolha o fabricante da Placa de Video:   </h2>
+                    <div class="botaoPVideo">
+    <button class="botaoV1" data-fabricante="AMD"></button>
+    <button class="botaoV2" data-fabricante="NVIDIA"></button>
+</div>
+                        <div class="dropdown">
+                        <div class="select">
+                        <span class="selected">--</span>
+                        <div class="caret"></div>
+                        </div>
+                        <ul class="menuP">
+                            <li class="active">--</li>
+                            <li>AMD Radeon RX 7600</li>
+                            <li>AMD Radeon RX 7700 XT</li>
+                            <li>AMD Radeon RX 7900 XT</li>
+                            <li>AMD Radeon RX 7900 XTX</li>
+                            <li>NVIDIA GeForce RTX 4050</li>
+                            <li>NVIDIA GeForce RTX 4060 TI</li>
+                            <li>NVIDIA GeForce RTX 4070 TI</li>
+                            <li>NVIDIA GeForce RTX 4090</li>
+                        </ul>
+                    </div>
+
+                    <h2 class = "tituloSoquete">Soquete de Placa Mãe:</h2>
+                    <div class = "SoqueteplacaMae">
+                        <div class = "dropdownPM">
+                            <div class="select">
+                            <span class="selected">--</span>
+                            <div class="caret"></div>
+                        </div>
+                        <ul class = "menuPM">
+
+                        </ul>
+                    </div>
+
+                    <div class="Considerações">
+                        <h2>Considerações no Arquivo:</h2>
+                        <h3>Portência de fonte recomendada</h3>
+                        <h3>Valor aproximado <span id="valorAproximado"></span></h3>
+                    </div>
+                    
+                    <button id class="botaoSubmit">Enviar configurações de Máquina</button>
+    
+                </form>
+                <div id="customAlert" class="alert hidden">
+                    <div class="alert-content">
+                        <h2>Hardware Craft</h2>
+                        <p id="alertMessage">Esta é a mensagem do alerta.</p>
+                        <button onclick="fecharAlerta()">OK</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    
+    </main>
+    <footer>
+        <div class="footer">
+            <p>Hardware Craft </p>
+            <p>E-mail: contato@hardwarecraft.com.br</p>
+            <ul class="social">
+              </p><a class="projeto" href="https://github.com/Guilherme-de-Melo/PRJ-Gestao/tree/Main"><i class="projetogit"></i></a></p>
+            </ul>
+          </div> 
+        
+        
+          <div class="footer">
+            <p>© 2024 Hardware Craft. Todos os direitos reservados.</p>
+            <p>Termos de Uso | Política de Privacidade</p>
+          </div>
+    </footer>
+    <script src="Selector.js"></script>
+    <script src="PlacaMae.js"></script>
+    <script>
+
+        document.querySelectorAll('.botaoProcessador button').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.botaoProcessador button').forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+
+        document.querySelectorAll('.botaoPVideo button').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.botaoPVideo button').forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+
+        document.getElementById('generateFile').addEventListener('click', () => {
+
+            const selectedProcessor = document.querySelector('.botaoProcessador .active')?.dataset?.fabricante || '--';
+            const selectedVideoCard = document.querySelector('.botaoPVideo .active')?.dataset?.fabricante || '--';
+
+            if (selectedProcessor === '--' || selectedVideoCard === '--') {
+                alert("Por favor, selecione um processador e uma placa de vídeo.");
+                return;
+            }
+
+            const content = `Configurações selecionadas:\nProcessador: ${selectedProcessor}\nPlaca de Vídeo: ${selectedVideoCard}`;
+
+            const blob = new Blob([content], { type: 'text/plain' });
+
+
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'configuracoes.txt';
+
+            link.click();
+        });
+    </script>
+  
+    
+</body>
+</html>
