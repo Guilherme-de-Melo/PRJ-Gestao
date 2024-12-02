@@ -74,8 +74,6 @@ function aplicarFiltro(fabricante, tipoFiltro) {
     console.log(options);
 
     options.forEach(item => {
-        console.log(item.textContent);
-        console.log(fabricante);
         if (item.textContent === '--' || item.textContent.includes(fabricante)) {
             item.style.display = 'block';
         } else {
@@ -251,7 +249,7 @@ document.querySelector('.botaoSubmit').addEventListener('click', (event) => {
       .then(response => response.json())
       .then(data => {
         console.log('Resposta do servidor:', data);
-        atualizarInformacoes('Média entre' + data.tdp + ' de TDP', data.precoProduto);
+        atualizarInformacoes('Acima de ' + data.tdp + ' de TDP', data.precoProduto);
         // Caso todas as validações sejam aprovadas, prossiga
         gerarArquivoDownload(data.tdp, data.precoProduto);
       })
@@ -264,7 +262,6 @@ function atualizarInformacoes(novaFonte, novoValor) {
     const fontesRecomendadas = document.querySelector('.Considerações :nth-child(2)');
     const valorAproximado = document.querySelector('.Considerações h3:last-child');
 
-    console.log(fontesRecomendadas);
     fontesRecomendadas.textContent = `Fonte recomendada: ${novaFonte}`;
     valorAproximado.textContent = `Valor aproximado: R$ ${novoValor}`;
   }
